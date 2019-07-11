@@ -2,7 +2,8 @@ import { IConfig } from 'umi-types';
 
 // ref: https://umijs.org/config/
 const config: IConfig =  {
-  publicPath: '/ToDoList/',
+  publicPath: './',
+  base: '/ToDoList',
   hash: true,
   treeShaking: true,
   plugins: [
