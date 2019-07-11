@@ -2,13 +2,15 @@ import { IConfig } from 'umi-types';
 
 // ref: https://umijs.org/config/
 const config: IConfig =  {
+  publicPath: '/ToDoList/',
+  hash: true,
   treeShaking: true,
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       dva: true,
-      dynamicImport: { webpackChunkName: true },
-      title: 'ToDoList',
+      dynamicImport: false,
+      title: '待办事项',
       dll: true,
       
       routes: {
