@@ -1,0 +1,113 @@
+@classPrefix: todolist;
+
+:global {
+  .@{classPrefix} {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    * {
+      box-sizing: border-box;
+      transition: all .3s;
+    }
+  }
+  .@{classPrefix}-container {
+    flex: 1;
+    margin: 0;
+    padding: 0 0 8px 0;
+    overflow: auto;
+    list-style: none;
+  }
+  .@{classPrefix}-container--empty {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .@{classPrefix}-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+  .@{classPrefix}-item--checkbox {
+    > input[type="checkbox"] {
+      display: block;
+      height: 32px;
+      width: 32px;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+  .@{classPrefix}-item--title {
+    flex: 1;
+    word-break: break-all;
+    line-height: 24px;
+    padding: 4px 16px;
+    text-align: left;
+  }
+  .@{classPrefix}-item--completed .@{classPrefix}-item--title {
+    text-decoration: line-through;
+    color: #999;
+  }
+  .@{classPrefix}-item--action {
+    > button {
+      font-size: 32px;
+      line-height: 28px;
+      font-weight: bold;
+      display: block;
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+    }
+  }
+  .@{classPrefix}-input {
+    display: flex;
+    padding: 8px 16px;
+    > input {
+      font-size: 16px;
+      height: 32px;
+      line-height: 30px;
+      flex: 1;
+      border: none;
+      border-bottom: 2px solid #666;
+      &:focus {
+        outline: none;
+      }
+    }
+    > button {
+      font-size: 16px;
+      line-height: 28px;
+      appearance: none;
+      padding: 0 16px;
+      border: 2px solid #666;
+      border-radius: 4px;
+      margin-left: 8px;
+      background-color: #fff;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .@{classPrefix}-tab {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    border-top: 2px solid #666;
+  }
+  .@{classPrefix}-tab--item {
+    flex: 1;
+    border-right: 2px solid #666;
+    padding: 16px;
+    cursor: pointer;
+    &:last-child {
+      border-right: none;
+    }
+    &:hover, &.@{classPrefix}-tab--item-active {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+}

@@ -1,19 +1,29 @@
 import React from 'react';
-import styles from './index.css';
+import { connect, DispatchProp } from 'dva';
 
+import styles from './index.less';
+import { ToDoListModelState } from '@/models/todolist';
+import ToDoList, { ToDoListItem } from '@/components/ToDoList';
 
-export default function() {
-  return (
-    <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            Getting Started
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+interface IndexProps extends DispatchProp {
+  list: Array<ToDoListItem>;
 }
+
+const Index: React.FC<IndexProps> = ({ list, dispatch }) => (
+  <div className={styles.container}>
+    <h1>待办事项</h1>
+    <ToDoList
+      className={styles.todo}
+      value={list}
+      onChange={(todolist) => dispatch({
+        type: 'todolist/update',
+        payload: todolist
+      })}
+    />
+  </div>
+);
+
+export default connect((state: { todolist: ToDoListModelState }) => ({
+  list: state.todolist.list
+}))(Index)
+
